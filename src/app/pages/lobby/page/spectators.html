@@ -1,0 +1,32 @@
+<div id="sidebar-links"
+     ng-show="spectators.shouldShowSpectators()">
+  <h1 class="spectators-title">
+    Spectators
+  </h1>
+  <md-menu ng-repeat="spectator in spectators.lobbyInformation.spectators"
+           md-position-mode="target-right target"
+           md-offset="-180 0"
+           class="spectators-list">
+    <md-button class="player-button sidebar-link"
+               ng-click="$mdOpenMenu($event)">
+      {{::spectator.name}}
+    </md-button>
+    <md-menu-content width="3">
+      <md-menu-item>
+        <md-button ng-click="spectators.goToSteamProfile(spectator.steamid)">
+          Steam profile
+        </md-button>
+      </md-menu-item>
+      <md-menu-item ui-sref="user-profile({userID: spectator.steamid})">
+        <md-button>
+          Stadium profile
+        </md-button>
+      </md-menu-item>
+      <md-menu-item ng-if="$root.userProfile.steamid==spectators.lobbyInformation.leader.steamid">
+        <md-button ng-click="spectators.ban(spectator)">
+          Ban player from lobby
+        </md-button>
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
+</div>

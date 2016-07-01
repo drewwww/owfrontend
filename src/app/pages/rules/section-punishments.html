@@ -1,0 +1,144 @@
+<div  class="settings-section">
+  <h1>Overwatch Rule Violations</h1>
+
+  <p>Since there's only one admin at the moment, and a relatively small community, you may think that our rules will
+  differ from the ones over at TF2Stadium.
+  They won't.
+  I'm enforcing the same rules, but the difference is, I'm the only one making decisions. Believe me, I won't go out of
+  my way to harrass users, but if you consistently act like an asshole to other users, you'll be banned or suspended,
+  according to the guidelines below.</p>
+
+
+
+  <table
+     ng-class="{colorblind: colorblindMode}"
+     class="punishment-grid">
+    <thead>
+      <th class="labels">
+        <md-checkbox ng-model="colorblindMode"
+                     aria-label="colorblindMode">
+          Color Blind Grid
+        </md-checkbox>
+      </th>
+      <th>1st Offence</th>
+      <th>2nd Offence</th>
+      <th>3rd Offence</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Trolling, Spamming, etc. in chat</td>
+        <td class="ban-tiny">30min Chat Ban</td>
+        <td class="ban-minor"><span ng-if="colorblindMode">Minor&nbsp;</span>Chat Ban</td>
+        <td class="ban-medium"><span ng-if="colorblindMode">Medium&nbsp;</span>Chat Ban</td>
+      </tr>
+      <tr>
+        <td>Creating troll lobbies/excessive kicking</td>
+        <td class="ban-minor">
+          <span ng-if="colorblindMode">Minor&nbsp;</span>Lobby Creation Ban</td>
+        <td class="ban-medium">
+          <span ng-if="colorblindMode">Medium&nbsp;</span>Lobby Creation Ban</td>
+        <td class="ban-major">
+          <span ng-if="colorblindMode">Major&nbsp;</span>Lobby Creation Ban</td>
+      </tr>
+      <tr>
+        <td>Flaming (minor raging, non-derogatory personal attacks)</td>
+        <td class="ban-minor"><span ng-if="colorblindMode">Minor</span></td>
+        <td class="ban-medium"><span ng-if="colorblindMode">Medium</span></td>
+        <td class="ban-major"><span ng-if="colorblindMode">Major</span></td>
+      </tr>
+      <tr>
+        <td>Minor Exploit</td>
+        <td class="ban-minor"><span ng-if="colorblindMode">Minor</span></td>
+        <td class="ban-medium"><span ng-if="colorblindMode">Medium</span></td>
+        <td class="ban-major"><span ng-if="colorblindMode">Major</span></td>
+      </tr>
+      <tr>
+        <td>Major Exploit</td>
+        <td class="ban-medium"><span ng-if="colorblindMode">Medium</span></td>
+        <td class="ban-major"><span ng-if="colorblindMode">Major</span></td>
+        <td class="ban-severe"><span ng-if="colorblindMode">Severe</span></td>
+      </tr>
+      <tr>
+        <td>Major Flaming (unprovoked, racist, and/or derogatory)</td>
+        <td class="ban-medium"><span ng-if="colorblindMode">Medium</span></td>
+        <td class="ban-major"><span ng-if="colorblindMode">Major</span></td>
+        <td class="ban-severe"><span ng-if="colorblindMode">Severe</span></td>
+      </tr>
+      <tr>
+        <td>Trolling/Griefing lobbies</td>
+        <td class="ban-medium"><span ng-if="colorblindMode">Medium</span></td>
+        <td class="ban-major"><span ng-if="colorblindMode">Major</span></td>
+        <td class="ban-severe"><span ng-if="colorblindMode">Severe</span></td>
+      </tr>
+      <tr>
+        <td>Hacking</td>
+        <td class="ban-critical"><span ng-if="colorblindMode">Critical</span></td>
+        <td class="ban-permanent"><span ng-if="colorblindMode">Permanent</span></td>
+        <td class="ban-permanent"><span ng-if="colorblindMode">Permanent</span></td>
+      </tr>
+      <tr>
+        <td>Attacks against the website</td>
+        <td class="ban-permanent"><span ng-if="colorblindMode">Permanent</span></td>
+        <td class="ban-permanent"><span ng-if="colorblindMode">Permanent</span></td>
+        <td class="ban-permanent"><span ng-if="colorblindMode">Permanent</span></td>
+      </tr>
+      <tr>
+        <td>Illegal activity, Doxing</td>
+        <td class="ban-permanent"><span ng-if="colorblindMode">Permanent</span></td>
+        <td class="ban-permanent"><span ng-if="colorblindMode">Permanent</span></td>
+        <td class="ban-permanent"><span ng-if="colorblindMode">Permanent</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table
+     ng-class="{colorblind: colorblindMode}"
+     class="punishment-grid-legend">
+    <tbody>
+      <tr>
+        <td class="ban-minor"><span ng-if="colorblindMode">Minor<br /></span>1 Day</td>
+        <td class="ban-medium"><span ng-if="colorblindMode">Medium<br /></span>1 Week</td>
+        <td class="ban-major"><span ng-if="colorblindMode">Major<br /></span>1 Month</td>
+        <td class="ban-severe"><span ng-if="colorblindMode">Severe<br /></span>3 Months</td>
+        <td class="ban-critical"><span ng-if="colorblindMode">Critical<br /></span>6 Months</td>
+        <td class="ban-permanent"
+            ng-if="!colorblindMode">Permanent</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Rule violations after the third offense or situations that
+  require extra attention are escalated to an Admin Committee that may
+  determine to proceed as they feel necessary.</p>
+
+  <h2>Staff Structure</h2>
+
+  <p>We have 3 different levels of staff: Trial Moderator, Moderator,
+  and Administrator. Each of these three have access to slightly
+  different sets of tools. Trial Moderators can ban a user up to 1
+  week, Moderators can ban up to 1 month, and Administrators can ban
+  up to 3 months. Any bans beyond that can only be given out by a
+  committee of Administrators that meet regularly.</p>
+
+  <h2>Appeal Process</h2>
+
+  <p>Our staff are human and humans make mistakes sometimes. We
+  realize this and take our appellate process just as seriously as our
+  moderation. If you believe you were punished unjustly and wish to
+  appeal, follow the stickied instructions in our Ban Appeals
+  Forum.</p>
+
+  <p>If you believe a staff member is abusing their power, please
+  message a Moderator or an Administrator you feel comfortable talking
+  to. We treat cases of staff abuse with the utmost seriousness and
+  will take all action necessary to stop such activities. However
+  please realize that it is impossible for any staff to always take
+  action in a way that all parties feel is fair or even is objectively
+  fair.</p>
+
+  <h2>Questions, Comments, and Feedback</h2>
+
+  <p>If you have any questions, issues, or concerns with our rules or
+  how we handle rule violations, please post in our Rules, Questions,
+  and Feedback Forum or contact a staff member.</p>
+</div>

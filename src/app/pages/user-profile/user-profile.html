@@ -1,0 +1,142 @@
+<div ng-if="userProfile.loadingError"
+     class="profile-loading-error">
+  <h1>Error loading profile</h1>
+  <p>{{userProfile.error}}</p>
+</div>
+
+<div class="profile-sheet user-profile"
+     ng-if="!userProfile.loadingError && userProfile.profile">
+  <a href="{{userProfile.steamUrl}}"
+     target="_blank"
+     tabindex="0"
+     ng-focus="hover_steam=true"
+     ng-blur="hover_steam=false">
+    <div class="avatar">
+      <img alt="avatar"
+           ng-src="{{userProfile.profile.avatar.replace('.jpg', '_full.jpg')}}"
+           width="200"
+           height="200" />
+      <div ng-class="{'focused': hover_steam}"></div>
+    </div>
+  </a>
+
+  <h1 class="player-name">
+    <a href="{{userProfile.steamUrl}}"
+       target="_blank"
+       ng-mouseover="hover_steam = true"
+       ng-mouseout="hover_steam = false"
+       ng-focus="hover_steam=true"
+       ng-blur="hover_steam=false"
+       tabindex="-1">
+      {{::userProfile.profile.name}}
+    </a>
+  </h1>
+
+  <p class="player-details">
+    Playing OverwatchStadium since {{::userProfile.profile.createdAt.format('MMMM Do, YYYY')}}
+  </p>
+
+  <ul class="badges">
+    <li ng-repeat="tag in userProfile.profile.tags"
+        ng-if="tag !== 'player'">
+      <img class="badge" ng-src="/assets/img/badges/{{tag}}.png" />
+      <md-tooltip>{{::tag | capitalize}}</md-tooltip>
+    </li>
+  </ul>
+
+  <!--<ul class="external-links clear-floats">-->
+    <!--<li ng-repeat="link in userProfile.profile.external_links">-->
+      <!--<a href="{{link.url}}"-->
+         <!--target="_blank">-->
+        <!--<img ng-if="link.name !== 'logstf'"-->
+             <!--class="logo"-->
+             <!--height="50"-->
+             <!--ng-src="{{link.img}}"-->
+             <!--alt="{{link.description}}" />-->
+        <!--<md-icon ng-if="link.name === 'logstf'"-->
+                 <!--class="logo logo-{{link.name}}"-->
+                 <!--md-svg-src="{{link.img}}"-->
+                 <!--aria-label="{{link.desc}}"></md-icon>-->
+      <!--</a>-->
+      <!--<md-tooltip>{{::link.description}} Profile</md-tooltip>-->
+    <!--</li>-->
+  <!--</ul>-->
+</div>
+
+<div class="profile-sheet"
+     ng-if="!userProfile.loadingError && userProfile.profile">
+  <div style="float: left">
+    <h1 class="lobbies-played">Lobbies: {{userProfile.profile.stats.lobbiesPlayed | number}}</h1>
+  </div>
+
+  <div class="karma">
+    <h1>
+      Karma:
+      <span ng-class="{'karma-good': userProfile.profile.stats.karma > 0,
+                      'karma-bad': userProfile.profile.stats.karma < 0}">
+        {{userProfile.profile.stats.karma | number}}
+      </span>
+    </h1>
+    <h2>
+      Leaves: <span class="karma-bad">{{userProfile.profile.stats.leaves | number}}</span>
+    </h2>
+    <h2>
+      Subs: <span class="karma-good">{{userProfile.profile.stats.substitutes | number}}</span>
+    </h2>
+  </div>
+
+
+  <div class="clearfix"></div>
+
+</div>
+
+<div class="profile-sheet profile-lobbies-sheet"
+     ng-if="!userProfile.loadingError && userProfile.profile">
+  <h1>Recent Lobbies</h1>
+  <p class="no-recent-lobbies" ng-if="!userProfile.lobbies">
+    Loading...
+  </p>
+  <p class="no-recent-lobbies"
+     ng-if="userProfile.lobbies && userProfile.lobbies.length === 0">
+    No lobbies played!
+  </p>
+  <div class="recent-lobbies"
+       ng-if="userProfile.lobbies && userProfile.lobbies.length > 0">
+    <a md-ink-ripple
+       ng-repeat="lobbyInformation in userProfile.lobbies track by lobbyInformation.id"
+       class="lobby-row"
+       ui-sref="lobby-page({lobbyID: lobbyInformation.id})">
+      <div class="lobby-image"
+           ng-style="{'background-image':'url(/assets/img/maps/lobby-row/' + lobbyInformation.map + '.png)'}">
+        <span class="lobby-type">{{::lobbyInformation.type}}</span>
+        <span class="lobby-map">{{::lobbyInformation.map}}</span>
+      </div>
+      <div flex class="lobby-main">
+        <md-icon
+           ng-if="lobbyInformation.playerInfo.class"
+           class="{{::lobbyInformation.playerInfo.team}}"
+           md-svg-icon="class:{{::lobbyInformation.playerInfo.class}}"
+           aria-label="{{::lobbyInformation.playerInfo.team}} {{::lobbyInformation.playerInfo.class}}"></md-icon>
+        <span class="lobby-region">
+          {{::lobbyInformation.region.code}}
+          <md-tooltip md-direction="bottom">
+            Server located in {{::lobbyInformation.region.name}}
+          </md-tooltip>
+        </span>
+        <span class="lobby-league">
+          {{::lobbyInformation.league}}
+          <md-tooltip md-direction="bottom">
+            {{::lobbyInformation.league | uppercase}} rules
+          </md-tooltip>
+        </span>
+        <md-icon
+           md-svg-icon="logo:{{!lobbyInformation.mumbleRequired? 'not-':''}}mumble"
+           aria-label="Mumble {{!lobbyInformation.mumbleRequired? 'not ':''}} Required">
+          <md-tooltip>
+            Mumble {{!lobbyInformation.mumbleRequired? 'not ':''}}mandatory
+          </md-tooltip>
+        </md-icon>
+      </div>
+    </a>
+  </div>
+</div>
